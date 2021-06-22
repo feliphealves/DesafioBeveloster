@@ -9,13 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { HttpInterceptorModule } from './service/header-interceptor';
 import { GuardiaoGuard } from './service/guardiao.guard';
 import { HomeDoadorComponent } from './home-doador/home-doador.component';
-import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const appRouters: Routes = [
 
   { path: 'home-doador', component: HomeDoadorComponent },
-  { path: 'home-admin', component: HomeAdminComponent, canActivate: [GuardiaoGuard] },
   { path: 'login', component: LoginComponent },
   { path: '', component: LoginComponent },
 ];
@@ -27,8 +25,6 @@ export const routes: ModuleWithProviders = RouterModule.forRoot(appRouters);
     AppComponent,
     LoginComponent,
     HomeDoadorComponent,
-    HomeAdminComponent,
-
   ],
   imports: [
     BrowserModule,

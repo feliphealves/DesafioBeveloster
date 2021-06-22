@@ -16,22 +16,12 @@ ngOnInit() { }
 
     login(usuario){
 
-       return this.http.post(AppConstants.baseLogin ,JSON.stringify(usuario)).subscribe(data => {
-
-       var token = JSON.parse(JSON.stringify(data)).Authorization.split(' ')[1];
-
+      return this.http.post(AppConstants.baseLogin ,JSON.stringify(usuario)).subscribe(data => {
+      var token = JSON.parse(JSON.stringify(data)).Authorization.split(' ')[1];
       localStorage.setItem("token", token);
-
       var str = atob(localStorage.getItem("token").split(".")[1]);
-      var verificaAdmin = str.indexOf("ROLE_ADMIN") > -1;
-      var verificaUser = str.indexOf("ROLE_USER") > -1;
-      if(verificaAdmin){
-        this.router.navigate(['home-admin']);
-       }
-      if(verificaUser){
-        this.router.navigate(['home-doador']);
-       }
-       
+      this.router.navigate(['home-doador']);
+
        },
          error => {
 
